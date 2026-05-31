@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { apiFetch } from '../api';
 
 const features = [
   'Automated BIR tax categorization',
@@ -9,16 +10,32 @@ const features = [
 ];
 
 function Home() {
-  const [message, setMessage] = useState('Loading AI accounting status...');
+  const [status, setStatus] = useState({ connected: false, message: 'Testing backend connection...' });
 
   useEffect(() => {
-    setMessage('Ready to connect to backend and Philippine compliance modules.');
+    // Test backend connectivity
+    apiFetch('/api/accounting/compliance')
+      .then((response) => {
+        if (response.ok) {
+          setStatus({ connected: true, message: 'âœ… Backend connected successfully!' });
+        } else {
+          setStatus({ connected: false, message: 'âš ï¸ Backend response error. Check server logs.' });
+        }
+      })
+      .catch(() => {
+        setStatus({ 
+          connected: false, 
+          message: 'âŒ Backend not connected. Make sure the backend server is running on port 4000 or deployed on Vercel.' 
+        });
+      });
   }, []);
 
   return (
     <section>
       <h2>AI Accounting Dashboard</h2>
-      <p>{message}</p>
+      <div className={`card ${status.connected ? 'success' : 'warning'}`}>
+        <p><strong>Backend Status:</strong> {status.message}</p>
+      </div>
       <div className="card-grid">
         {features.map((feature) => (
           <article key={feature} className="card">
@@ -27,11 +44,12 @@ function Home() {
         ))}
       </div>
       <div className="callout">
-        <h3>Next Steps</h3>
+        <h3>Getting Started</h3>
         <ul>
-          <li>Configure `backend/.env` with your OpenAI API key.</li>
-          <li>Extend invoice scanning for BIR ATC and SAWT generation.</li>
-          <li>Implement payroll calculator for SSS, PhilHealth, and Pag-IBIG.</li>
+          <li><strong>Local Development:</strong> Run `npm run dev` in the backend folder (port 4000)</li>
+          <li><strong>Configure API Keys:</strong> Set `OPENAI_API_KEY` in `backend/.env` for AI features</li>
+          <li><strong>Try it out:</strong> Navigate to Invoices, Payroll, or OCR pages to test backend features</li>
+          <li><strong>Production:</strong> Backend is deployed as Vercel Serverless Functions at `/api/accounting`</li>
         </ul>
       </div>
     </section>
