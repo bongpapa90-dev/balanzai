@@ -1,0 +1,23 @@
+{
+  "name": "philippines-ai-accounting",
+  "private": true,
+  "version": "0.1.0",
+  "description": "AI-enabled Philippine accounting system scaffold with BIR compliance and CAS-ready architecture.",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "install:all": "npm install",
+    "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "npm --workspace backend run dev",
+    "start:frontend": "npm --workspace frontend run dev",
+    "start:web": "npm --workspace frontend run build && npm --workspace backend run build && cross-env NODE_ENV=production npm --workspace backend run start",
+    "lint": "echo \"Add lint scripts in workspace packages\"",
+    "test": "echo \"Add unit tests for backend and frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "cross-env": "^10.1.0"
+  }
+}
