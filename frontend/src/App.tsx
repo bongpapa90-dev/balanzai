@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="app-shell">
       <aside className="sidebar">
-        <h1>Philippine AI Accounting</h1>
+        <h1>AI powered Accounting System</h1>
         <nav>
           <Link to="/">Dashboard</Link>
           <Link to="/invoices">Invoices</Link>
