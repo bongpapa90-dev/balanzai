@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+import { apiFetch } from '../api';
 
 function Invoices() {
   const [text, setText] = useState('');
@@ -11,7 +12,7 @@ function Invoices() {
     setResult(null);
 
     try {
-      const response = await fetch('http://localhost:4000/api/accounting/invoice/parse', {
+      const response = await apiFetch('/api/accounting/invoice/parse', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text })
