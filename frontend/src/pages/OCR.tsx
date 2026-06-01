@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+import { apiFetch } from '../api';
 
 function OCR() {
   const [file, setFile] = useState<File | null>(null);
@@ -20,7 +21,7 @@ function OCR() {
     }
 
     try {
-      const response = await fetch('http://localhost:4000/api/accounting/ocr/upload', {
+      const response = await apiFetch('/api/accounting/ocr/upload', {
         method: 'POST',
         body: formData
       });
