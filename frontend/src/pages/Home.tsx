@@ -17,15 +17,15 @@ function Home() {
     apiFetch('/api/accounting/compliance')
       .then((response) => {
         if (response.ok) {
-          setStatus({ connected: true, message: 'âœ… Backend connected successfully!' });
+          setStatus({ connected: true, message: '✅ Backend connected successfully!' });
         } else {
-          setStatus({ connected: false, message: 'âš ï¸ Backend response error. Check server logs.' });
+          setStatus({ connected: false, message: '⚠️ Backend response error. Check server logs.' });
         }
       })
       .catch(() => {
         setStatus({ 
           connected: false, 
-          message: 'âŒ Backend not connected. Make sure the backend server is running on port 4000 or deployed on Vercel.' 
+          message: '❌ Backend not connected. Make sure the backend server is running on port 4000 or deployed on Vercel.' 
         });
       });
   }, []);
