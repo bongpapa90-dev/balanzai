@@ -8,7 +8,7 @@ The AI Powered Accounting System uses a full-stack architecture:
 - **Backend**: Express.js + TypeScript - Deployed on Vercel as Serverless Functions (`/api/accounting/[...slug].ts`)
 - **API Communication**: 
   - Local Dev: Frontend proxies `/api` to `http://localhost:4000`
-  - Production: Frontend calls `/api` â†’ Vercel routes to serverless functions
+  - Production: Frontend calls `/api` → Vercel routes to serverless functions
 
 ## Local Development Setup
 
@@ -66,7 +66,7 @@ The frontend's Vite dev server will automatically proxy `/api` requests to the b
 
 ### Test via Frontend
 1. Open `http://localhost:5173` in your browser
-2. Go to Dashboard (Home) page - should show "âœ… Backend connected successfully!"
+2. Go to Dashboard (Home) page - should show "✅ Backend connected successfully!"
 3. Test individual features:
    - **Invoices**: Parse invoice text
    - **OCR**: Upload documents
@@ -123,7 +123,7 @@ curl http://localhost:4000/api/accounting/audit/trail
 
 The backend is automatically deployed as Vercel Serverless Functions:
 
-1. **Deployment**: Push to GitHub â†’ Vercel auto-deploys
+1. **Deployment**: Push to GitHub → Vercel auto-deploys
 2. **API URL**: `https://balanzai.vercel.app/api/accounting/*`
 3. **Environment Variables**: Set in Vercel Project Settings:
    - `OPENAI_API_KEY` - Your OpenAI API key
@@ -139,7 +139,7 @@ The `vercel.json` file defines:
 ### Set Environment Variables on Vercel
 
 1. Go to your Vercel project dashboard
-2. Settings â†’ Environment Variables
+2. Settings → Environment Variables
 3. Add:
    - `OPENAI_API_KEY`: Your OpenAI API key
    - `NODE_ENV`: `production`
