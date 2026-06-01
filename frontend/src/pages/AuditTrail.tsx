@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import { apiFetch } from '../api';
 
 function AuditTrail() {
   const [events, setEvents] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/accounting/audit/trail')
+    apiFetch('/api/accounting/audit/trail')
       .then((response) => response.json())
       .then(setEvents)
       .catch(() => setError('Unable to load audit trail. Check backend connectivity.'));
