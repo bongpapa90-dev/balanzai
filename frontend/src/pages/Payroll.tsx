@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+import { apiFetch } from '../api';
 
 function Payroll() {
   const [employeeName, setEmployeeName] = useState('Juan dela Cruz');
@@ -14,7 +15,7 @@ function Payroll() {
     setResult(null);
 
     try {
-      const response = await fetch('http://localhost:4000/api/accounting/payroll/calculate', {
+      const response = await apiFetch('/api/accounting/payroll/calculate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
