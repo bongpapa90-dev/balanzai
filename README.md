@@ -35,7 +35,11 @@ This repository is a starter scaffold for an AI-enabled accounting system design
 - The backend includes stub services for AI, invoice parsing, BIR form templates, and payroll computation.
 - Configure API keys in `backend/.env.example` and move to `backend/.env`.
 - `backend/data/accounting.db` stores CAS audit trail events in SQLite for persistence.
-- Extend the system with real OCR, BIR form mapping, EIS reporting, and payroll deduction workflows.
+- Extend the system with real OCR, BIR form mapping, EIS reporting, and payroll deduction workfloow ws.
+
+## Deployment Status
+
+Last build triggered: 2026-06-01 02:35 UTC - Vercel GitHub integration active
 
 ## New Features
 
