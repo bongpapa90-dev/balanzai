@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
+import { apiFetch } from '../api';
 
 function Compliance() {
   const [summary, setSummary] = useState<any>(null);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/accounting/compliance')
+    apiFetch('/api/accounting/compliance')
       .then((response) => response.json())
       .then(setSummary)
       .catch(() => setSummary({ error: 'Unable to connect to backend' }));
