@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { apiFetch } from '../api';
 
 const sampleTransactions = [
   {
@@ -22,7 +23,7 @@ function SAWT() {
     setResult(null);
 
     try {
-      const response = await fetch('http://localhost:4000/api/accounting/sawt', {
+      const response = await apiFetch('/api/accounting/sawt', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ quarter, transactions: JSON.parse(transactions) })
@@ -40,7 +41,7 @@ function SAWT() {
     }
 
     try {
-      const response = await fetch('http://localhost:4000/api/accounting/sawt/download', {
+      const response = await apiFetch('/api/accounting/sawt/download', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ quarter, transactions: JSON.parse(transactions) })
