@@ -1,5 +1,4 @@
-<!-- Last build triggered: 2026-05-31 23:10:51 -->
-# AI-Enabled Philippine Accounting System
+# AI powered Accounting System
 
 This repository is a starter scaffold for an AI-enabled accounting system designed for Philippine compliance. It includes a backend API, frontend dashboard, and AI/compliance service placeholders.
 
