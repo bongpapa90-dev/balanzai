@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { apiFetch } from '../api';
 
 function BIRForms() {
   const [forms, setForms] = useState<string[]>([]);
@@ -7,7 +8,7 @@ function BIRForms() {
   const [payload, setPayload] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/accounting/bir-forms')
+    apiFetch('/api/accounting/bir-forms')
       .then((response) => response.json())
       .then((data) => setForms(data.forms || []))
       .catch(() => setForms(['1601-C', '2550Q', '1702Q']));
@@ -15,7 +16,7 @@ function BIRForms() {
 
   const handleGenerate = async () => {
     const body = { formType: selectedForm, ...JSON.parse(payload || '{}') };
-    const response = await fetch('http://localhost:4000/api/accounting/bir-form', {
+    const response = await apiFetch('/api/accounting/bir-form', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
