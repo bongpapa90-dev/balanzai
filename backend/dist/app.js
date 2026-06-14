@@ -22,7 +22,20 @@ if (process.env.NODE_ENV === 'production') {
 }
 else {
     app.get('/', (_req, res) => {
-        res.json({ message: 'Philippine AI Accounting API is running' });
+        res.json({ message: 'AI powered Accounting System API is running', version: '0.1.0', endpoints: [
+                'POST /api/accounting/invoice/parse - Parse invoice text',
+                'POST /api/accounting/invoice - Analyze invoice',
+                'POST /api/accounting/ocr - Run OCR on image',
+                'POST /api/accounting/ocr/upload - Upload document for OCR',
+                'POST /api/accounting/sawt - Generate SAWT data',
+                'POST /api/accounting/sawt/download - Download SAWT .dat file',
+                'GET /api/accounting/compliance - Get compliance summary',
+                'GET /api/accounting/bir-forms - List available BIR forms',
+                'POST /api/accounting/bir-form - Generate BIR form',
+                'POST /api/accounting/payroll/calculate - Calculate payroll',
+                'GET /api/accounting/audit/trail - Get audit trail',
+                'POST /api/accounting/audit/event - Record audit event'
+            ] });
     });
 }
 exports.default = app;
